@@ -13,9 +13,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Unpack project.zip
+      - name: Unpack project zips
         run: |
-          if [ -f project.zip ]; then unzip -o project.zip; fi
+          for f in $(ls *.zip | sort -V); do unzip -o "$f"; done
           ls
 
       - uses: actions/setup-java@v4
